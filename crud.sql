@@ -220,3 +220,13 @@ WHERE day = '2022-01-02' AND hour '11:00' AND movie_room_id = 6;
 --Supprimer l'accès d'un administrateur via son login
 DELETE FROM administrators
 WHERE login = 'operator1@example.com';
+
+
+-- Sauvegarde de la base de données 
+mysqldump -u root -p root > db_cinema.sql
+
+-- Restauration de la base de données
+mysql -h localhost:8889 -u root -p root CINEMA_Reservation < db_cinema.sql
+
+-- Suppression Base de données pour mise en production
+DROP DATABASE CINEMA_Reservation;
